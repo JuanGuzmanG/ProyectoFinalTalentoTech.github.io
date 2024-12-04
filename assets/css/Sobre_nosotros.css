@@ -40,8 +40,39 @@ nav i{
 main{
     flex: 1;
     padding: 0 0 30px 0;
+    background-color: black;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+
 }
 
+.mision {
+
+    padding-bottom: 40px;
+}
+
+.vision {
+    text-align: right;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+.objetivos {
+    text-align: center;
+}
+
+main {
+    background-image: url("/assets/img/mario.png");
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
 footer{
     background-color: #2EA0E7;
     display: flex;
