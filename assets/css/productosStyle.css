@@ -1,17 +1,19 @@
-/* Estilos generales */
 body{
     background-color: rgb(119, 119, 119) !important;
 }
-.container {
+
+.contenedor {
     display: flex;
-    flex-wrap: wrap;
 }
 
-.sidebar {
-    width: 100%;
-    color: red;
+.sidebar { 
+    color: white;
 }
-
+.sidebarBlock{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
 .sidebar h2 {
     text-align: center;
 }
