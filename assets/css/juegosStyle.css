@@ -5,7 +5,6 @@ body{
 
 .contenedor {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .sidebar { 
@@ -64,6 +63,9 @@ body{
     color: #555;
 }
 
+.cart{
+    margin: 20px 40px 0 0;
+}
 /* Estilos responsivos */
 @media (min-width: 768px) {
     .sidebar {
