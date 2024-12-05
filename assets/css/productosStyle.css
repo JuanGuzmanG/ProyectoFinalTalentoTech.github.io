@@ -9,8 +9,9 @@ body{
 
 .sidebar {
     width: 100%;
-    color: white;
+    color: red;
 }
+
 .sidebar h2 {
     text-align: center;
 }
