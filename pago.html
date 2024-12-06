@@ -1,62 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pago</title>
-        <!-- css-->
-        <link rel="stylesheet" href="assets/css/plantilla.css">
-        <link rel="stylesheet" href="assets/css/pagostyle.css">
-</head>
-<body>
+    <!-- css-->
+    <link rel="stylesheet" href="assets/css/plantilla.css" />
+    <link rel="stylesheet" href="assets/css/pagostyle.css" />
+  </head>
+  <body>
     <header>
-        <nav>
-          <img class="logo lateral izq" src="/assets/img/Logo.png" alt="" />
-          <div class="nav_opciones">
-            <a href="index.html">INICIO</a>
-            <a href="Productos.html">PRODUCTOS</a>
-            <a href="Sobre_nosotros.html">SOBRE NOSOTROS</a>
-            <a href="Compras.html">COMPRAS</a>
-            <a href="Contacto.html">CONTACTO</a>
+      <nav>
+        <img class="logo lateral izq" src="/assets/img/Logo.png" alt="" />
+        <div class="nav_opciones">
+          <a href="index.html">INICIO</a>
+          <a href="Productos.html">PRODUCTOS</a>
+          <a href="Sobre_nosotros.html">SOBRE NOSOTROS</a>
+          <a href="Compras.html">COMPRAS</a>
+          <a href="Contacto.html">CONTACTO</a>
+        </div>
+        <i class="bi bi-search lateral der"></i>
+      </nav>
+    </header>
+    <main>
+
+      <h2>PAGO TARJETA</h2>
+      <section class="credit-card">
+        <div class="card-logo">
+          <img src="/assets/img/visa.png" alt="Visa" />
+          <img src="/assets/img/marstercard.png" alt="MasterCard" />
+        </div>
+        <form class="card-form">
+          <div class="input-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" placeholder="Nombre completo" required />
           </div>
-          <i class="bi bi-search lateral der"></i>
-        </nav>
-      </header>
-      <p class="titulo">PAGO TARJETA</p>
-    <div class="payment-form">
-        <h1 class="h4 mb-4 text-center">Datos de Pago</h1>
-        <form id="payment-form">
-            <div class="form-group">
-                <label for="card-number">Número de Tarjeta</label>
-                <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456" required>
+          <div class="input-group">
+            <label for="card-number">Número de Tarjeta</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required />
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label for="expiry-date">Fecha</label>
+              <input type="text" id="expiry-date" placeholder="MM/AA" required />
             </div>
-            <div class="form-group">
-                <label for="expiry-date">Fecha de expiración (MM/AA)</label>
-                <input type="text" class="form-control" id="expiry-date" placeholder="MM/AA" required>
+            <div class="input-group">
+              <label for="cvc">CVC</label>
+              <input type="text" id="cvc" placeholder="123" required />
             </div>
-            <div class="form-group">
-                <label for="cvc">CVC</label>
-                <input type="text" class="form-control" id="cvc" placeholder="123" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Pagar</button>
+          </div>
+          <button type="submit">Pagar</button>
         </form>
-    </div>
+      </section>
+    </main>
+    
     <footer>
-        <div class="izq_footer">
-          <ul class="">
-            <li>Soporte</li>
-            <li>Comunidad</li>
-            <li>Sobre Nosotros</li>
-          </ul>
-        </div>
-        <img src="/assets/img/Logo.png" alt="" />
-        <div class="der_footer">
-          <ul class="redes">
-            <li>Contacto</li>
-            <li>1310230123</li>
-            <li>adsfsd@gmail.com</li>
-          </ul>
-        </div>
-      </footer>
-</body>
+      <div class="izq_footer">
+        <ul class="">
+          <li>Soporte</li>
+          <li>Comunidad</li>
+          <li>Sobre Nosotros</li>
+        </ul>
+      </div>
+      <img src="/assets/img/Logo.png" alt="" />
+      <div class="der_footer">
+        <ul class="redes">
+          <li>Contacto</li>
+          <li>1310230123</li>
+          <li>adsfsd@gmail.com</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </html>
