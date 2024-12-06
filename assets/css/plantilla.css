@@ -5,6 +5,9 @@ body{
 ul{
     list-style: none;
 }
+a{
+    text-decoration: none;
+}
 nav{
     display: flex;
     background-color: #2F2C2C;
@@ -31,7 +34,9 @@ nav a{
 nav i{
     color: white;
 }
-
+.icons_nav i{
+    padding: 5px;
+}
 footer{
     background-color: #2EA0E7;
     display: flex;

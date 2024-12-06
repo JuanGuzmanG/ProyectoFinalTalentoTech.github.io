@@ -3,8 +3,6 @@ body{
     background-color: rgb(119, 119, 119) !important;
 }
 .cart a{
-    list-style: none;
-    text-decoration: none;
     color: white;
 }
 
@@ -88,6 +86,4 @@ padding: 10px;
 .card .btn {
 margin-top: 10px;
 }
-.list-group{
-    padding: 0 90px;
-}
+
