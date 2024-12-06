@@ -1,17 +1,19 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
 }
-li{
+
+li {
     list-style: none;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-nav{
+
+nav {
     display: flex;
     background-color: #2F2C2C;
     align-items: center;
@@ -20,30 +22,36 @@ nav{
     height: 80px;
     color: black;
 }
-nav .nav_opciones{
+
+nav .nav_opciones {
     padding: 10px 20px;
     background-color: #C2E7FF;
     border-radius: 20px;
 }
-nav .logo{
+
+nav .logo {
     width: 40px;
 }
-nav a{
+
+nav a {
     padding: 0 10px 0 10px;
     text-decoration: none;
     list-style: none;
     color: black;
 }
-nav i{
+
+nav i {
     color: white;
 }
-main{
+
+main {
     flex: 1;
     padding: 0 0 30px 0;
     background-color: black;
     margin: 30px;
     padding: 20px;
 }
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -54,7 +62,7 @@ h1 {
 .mision {
 
     padding-bottom: 40px;
-    
+
 }
 
 .vision {
@@ -68,6 +76,18 @@ h1 {
     text-align: center;
 }
 
+#contador {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 main {
     background-image: url("/assets/img/mario.png");
     background-attachment: fixed;
@@ -77,7 +97,8 @@ main {
     font-family: 'Open Sans', sans-serif;
     color: white;
 }
-footer{
+
+footer {
     background-color: #2EA0E7;
     display: flex;
     flex-direction: row;
@@ -85,16 +106,19 @@ footer{
     justify-content: space-evenly;
     padding: 20px 0;
 }
-footer ul{
+
+footer ul {
     margin: 0;
     padding: 0;
     text-align: center;
 }
-footer li{
+
+footer li {
     font-size: 20px;
     margin-bottom: 20px;
     color: white;
 }
-footer img{
+
+footer img {
     width: 150px;
 }
