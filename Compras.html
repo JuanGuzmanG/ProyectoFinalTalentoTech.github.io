@@ -88,62 +88,22 @@
         </ul>
         </div>
       </aside>
-      <main class="main-content">
-        <div class="card">
-          <img src="assets/img/divinity2.png" alt="Juego 1" />
-          <h3>DIVINITY</h3>
-          <p>Precio: $50</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/InspectorWaffles.jpg" alt="Juego 2" />
-          <h3>INSPECTOR WAFFLES</h3>
-          <p>Precio: $40</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/dota 2.webp" alt="Juego 3" />
-          <h3>DOTA 2</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/elden ring.jpg" alt="Juego 4" />
-          <h3>ELDEN RING</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/entropysurvivors.jpg" alt="Juego 5" />
-          <h3>ENTROPY SURVIVORS</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/Forzahorizon.webp" alt="Juego 6" />
-          <h3>FORZA HORIZON</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/ittakestwo.PNG" alt="Juego 7" />
-          <h3>IT TAKES TWO</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/RDR.PNG" alt="Juego 8" />
-          <h3>RED DEAD REDEMPTION</h3>
-          <p>Precio: $60</p>
-        </div>
-        <div class="card">
-          <img src="assets/img/sotf.jpg" alt="Juego 9" />
-          <h3>SONS OF THE FOREST</h3>
-          <p>Precio: $60</p>
-        </div>
-      </main>
+
+      <div class="cards"></div>
+
       <aside class="cart">
         <div>
           <h3>Carrito</h3>
-          <ul id="carrito" class="listacompras"></ul>
+          <ul id="carrito" class="list-group"></ul>
           <hr>
-          <p>Total $ <span id="total">0</span></p>
-          <button><a href="">pagar</a></button>
-          <button><a href="">paypal</a></button>
-          <button>vaciar</button>
+          <p class="text-right">Total $ <span id="total">0</span></p>
+          <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+          <button class="btn btn-info">
+          <a href="pago.html" target="target_blank">Pagar</a>
+          </button>
+          <button class="btn btn-info">
+          <a href="https://www.paypal.com/es/home" target="target_blank">Pagar</a>
+          </button>
         </div>
       </aside>
     </div>
@@ -165,17 +125,6 @@
         </ul>
       </div>
     </footer>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-      crossorigin="anonymous"
-    ></script>
     <script src="/assets/JS/carrito.js"></script>
   </body>
 </html>
