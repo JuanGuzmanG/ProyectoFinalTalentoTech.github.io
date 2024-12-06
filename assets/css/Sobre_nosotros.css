@@ -41,6 +41,8 @@ main{
     flex: 1;
     padding: 0 0 30px 0;
     background-color: black;
+    margin: 30px;
+    padding: 20px;
 }
 h1 {
     text-align: center;
@@ -48,9 +50,11 @@ h1 {
 
 }
 
+
 .mision {
 
     padding-bottom: 40px;
+    
 }
 
 .vision {
