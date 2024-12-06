@@ -63,6 +63,18 @@ main{
     color: rgb(255, 255, 255);
     padding: 2px 0;
 }
+.carrusel .texto{
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    padding: 8px 8px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 10);
+    opacity: 0.8; 
+}
 
 .titulo_nuevos{
     text-align: center;
@@ -83,6 +95,17 @@ main{
 .card .card-body{
     text-align: center;
 }
+#contador {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 footer{
     background-color: #2EA0E7;
     display: flex;
