@@ -1,206 +1,102 @@
+// Datos de ejemplo (puedes obtenerlos desde un servidor o archivo JSON)
+const productos = [
+    { id: 1, nombre: "Elder Ring", precio: 100, imagen: "assets/img/eldenring.jpg" },
+    { id: 2, nombre: "Divinity 2", precio: 150, imagen: "assets/img/divinity2.png" },
+    { id: 3, nombre: "Battlefield 3", precio: 200, imagen: "assets/img/battlefield.jpg" },
+    { id: 4, nombre: "Neon Blood", precio: 200, imagen: "assets/img/NEON_BLOOD.jpg" },
+    { id: 5, nombre: "Quake", precio: 200, imagen: "assets/img/QuakeWars.jpg" },
+    { id: 6, nombre: "Red Dead Redemption", precio: 200, imagen: "assets/img/RDR.PNG" },
+    { id: 7, nombre: "Son of the Forest", precio: 200, imagen: "assets/img/sotf.jpg" },
+    { id: 8, nombre: "Terraria", precio: 200, imagen: "assets/img/Terraria.webp" },
+  ];
+  
+  
+  // Carrito de compras
+  let carrito = [];
+  
+  // Referencias al DOM
+  const cardsContainer = document.querySelector(".cards");
+const carritoDOM = document.getElementById("carrito");
+const totalDOM = document.getElementById("total");
+const botonVaciar = document.getElementById("boton-vaciar");
 
-//DOM
-document.addEventListener('DOMContentLoaded', () => { 
-    // Variables
-    const baseDeDatos = [
-        {
-            id: 1,
-            nombre: 'Sombrero vueltiao con la bandera de Colombia, 23 vueltas',
-            precio: 250000,
-            imagen: 'assets/img/feature_prod_01.jpg',
-            categoria: 'sombreros'
-        },
-        {
-            id: 2,
-            nombre: 'Sombrero vueltiao-machiembriao',
-            precio: 150000,
-            imagen: 'assets/img/sombrero4.jpg',
-            categoria: 'sombreros'
-        },
-        {
-            id: 3,
-            nombre: 'Sombrero vueltiao colombiano 15 vueltas tricolor',
-            precio: 250000,
-            imagen: 'assets/img/feature_prod_02.jpg',
-            categoria: 'sombreros'
-        },
-        {
-            id: 4,
-            nombre: 'Mochila wayuu azul 6',
-            precio: 120000,
-            imagen: 'assets/img/shop_04.jpg',
-            categoria: 'mochilas'
-        },
-        {
-            id: 5,
-            nombre: 'Bolso en fique',
-            precio: 120000,
-            imagen: 'assets/img/shop_03.jpg',
-            categoria: 'bolsos'
-        },
-        {
-            id: 6,
-            nombre: 'Hamaca',
-            precio: 120000,
-            imagen: 'assets/img/category_img_02.jpg',
-            categoria: 'hamacas'
-        }
-    ];
+// Renderizar productos en .cards
+function renderizarProductos() {
+  productos.forEach((producto) => {
+    // Crear tarjeta
+    const card = document.createElement("div");
+    card.classList.add("card", "p-3");
 
-    let carrito = [];
-    const divisa = '$';
-    const DOMitems = document.querySelector('#items');
-    const DOMcarrito = document.querySelector('#carrito');
-    const DOMtotal = document.querySelector('#total');
-    const DOMbotonVaciar = document.querySelector('#boton-vaciar');
-    const miLocalStorage = window.localStorage;
-    const filtroSelect = document.getElementById("filtro");
+    card.innerHTML = `
+      <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}" />
+      <div class="card-body">
+        <h5 class="card-title">${producto.nombre}</h5>
+        <p class="card-text">Precio: $${producto.precio}</p>
+        <button class="btn btn-primary" data-id="${producto.id}">Agregar</button>
+      </div>
+    `;
 
-    // Funciones
+    // Agregar tarjeta al contenedor
+    cardsContainer.appendChild(card);
+  });
 
-    function renderizarProductos() {
-        DOMitems.innerHTML = "";
-
-        const filtro = filtroSelect.value;
-        const productosFiltrados = baseDeDatos.filter(producto => 
-            filtro === "todas" || producto.categoria === filtro
-        );
-
-        productosFiltrados.forEach((info) => {
-            const miNodo = document.createElement('div');
-            miNodo.classList.add('card', 'col-sm-4');
-            
-            const miNodoCardBody = document.createElement('div');
-            miNodoCardBody.classList.add('card-body');
-            
-            const miNodoTitle = document.createElement('h6');
-            miNodoTitle.classList.add('card-title');
-            miNodoTitle.textContent = info.nombre;
-            
-            const miNodoImagen = document.createElement('img');
-            miNodoImagen.classList.add('img-fluid');
-            miNodoImagen.setAttribute('src', info.imagen);
-            
-            const miNodoPrecio = document.createElement('p');
-            miNodoPrecio.classList.add('card-text');
-            miNodoPrecio.textContent = `${info.precio}${divisa}`;
-            
-            const miNodoBoton = document.createElement('button');
-            miNodoBoton.classList.add('btn', 'btn-primary');
-            miNodoBoton.textContent = 'Agregar';
-            miNodoBoton.setAttribute('marcador', info.id);
-            miNodoBoton.addEventListener('click', anadirProductoAlCarrito);
-
-            miNodoCardBody.appendChild(miNodoImagen);
-            miNodoCardBody.appendChild(miNodoTitle);
-            miNodoCardBody.appendChild(miNodoPrecio);
-            miNodoCardBody.appendChild(miNodoBoton);
-            miNodo.appendChild(miNodoCardBody);
-            DOMitems.appendChild(miNodo);
-        });
-    }
-
-// Obtén el contador del almacenamiento local
-let visitas = localStorage.getItem('contadorVisitas');
-
-// Si no hay visitas almacenadas, inicializa a 0
-if (!visitas) {
-    visitas = 0;
+  // Añadir eventos de clic a los botones de "Agregar al carrito"
+  document.querySelectorAll(".btn-primary").forEach((boton) =>
+    boton.addEventListener("click", agregarProducto)
+  );
 }
 
-// Incrementa el contador
-visitas++;
+// Agregar producto al carrito
+function agregarProducto(event) {
+  const idProducto = parseInt(event.target.dataset.id);
+  const producto = productos.find((prod) => prod.id === idProducto);
 
-// Guarda el nuevo contador en el almacenamiento local
-localStorage.setItem('contadorVisitas', visitas);
+  carrito.push(producto);
+  actualizarCarrito();
+}
 
-// Muestra el contador en la página
-document.getElementById('contador').textContent = visitas;
+// Actualizar carrito en el DOM
+function actualizarCarrito() {
+  // Limpiar el carrito antes de redibujarlo
+  carritoDOM.innerHTML = "";
 
-    function anadirProductoAlCarrito(evento) {
-        carrito.push(evento.target.getAttribute('marcador'));
-        renderizarCarrito();
-        guardarCarritoEnLocalStorage();
-        handleCarritoValue(carrito.length);
-    }
+  carrito.forEach((producto, index) => {
+    const li = document.createElement("li");
+    li.classList.add("list-group-item", "d-flex", "align-items-center");
 
-    function handleCarritoValue(value) {
-        const carritoContainer = document.getElementById("carrito-value");
-        carritoContainer.textContent = `${value}`;
-    }
+    li.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail" style="width: 50px; margin-right: 10px;" />
+      <div>
+        <div style="flex-grow: 1; width: 70px">
+        ${producto.nombre} - $${producto.precio}
+        </div>
+        <button style="margin-left: 10px" class="btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
+      </div>
+    `;
+    carritoDOM.appendChild(li);
 
-    function renderizarCarrito() {
-        DOMcarrito.textContent = '';
-        const carritoSinDuplicados = [...new Set(carrito)];
+    // Evento para eliminar productos
+    li.querySelector(".btn-danger").addEventListener("click", eliminarProducto);
+  });
 
-        carritoSinDuplicados.forEach((item) => {
-            const miItem = baseDeDatos.filter((itemBaseDatos) => {
-                return itemBaseDatos.id === parseInt(item);
-            });
+  // Actualizar el total
+  const total = carrito.reduce((sum, prod) => sum + prod.precio, 0);
+  totalDOM.textContent = total;
+}
 
-            const numeroUnidadesItem = carrito.reduce((total, itemId) => {
-                return itemId === item ? total += 1 : total;
-            }, 0);
+// Eliminar producto del carrito
+function eliminarProducto(event) {
+  const index = parseInt(event.target.dataset.index);
+  carrito.splice(index, 1);
+  actualizarCarrito();
+}
 
-            const miNodo = document.createElement('li');
-            miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-            miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
-            
-            const miBoton = document.createElement('button');
-            miBoton.classList.add('btn', 'btn-danger', 'mx-5');
-            miBoton.textContent = 'X';
-            miBoton.style.marginLeft = '1rem';
-            miBoton.dataset.item = item;
-            miBoton.addEventListener('click', borrarItemCarrito);
-            
-            miNodo.appendChild(miBoton);
-            DOMcarrito.appendChild(miNodo);
-        });
-        DOMtotal.textContent = calcularTotal();
-    }
-
-    function borrarItemCarrito(evento) {
-        const id = evento.target.dataset.item;
-        carrito = carrito.filter((carritoId) => {
-            return carritoId !== id;
-        });
-        renderizarCarrito();
-        guardarCarritoEnLocalStorage();
-        handleCarritoValue(carrito.length);
-    }
-
-    function calcularTotal() {
-        return carrito.reduce((total, item) => {
-            const miItem = baseDeDatos.filter((itemBaseDatos) => {
-                return itemBaseDatos.id === parseInt(item);
-            });
-            return total + miItem[0].precio;
-        }, 0).toFixed(2);
-    }
-
-    function vaciarCarrito() {
-        carrito = [];
-        renderizarCarrito();
-        localStorage.clear();
-    }
-
-    function guardarCarritoEnLocalStorage() {
-        miLocalStorage.setItem('carrito', JSON.stringify(carrito));
-    }
-
-    function cargarCarritoDeLocalStorage() {
-        if (miLocalStorage.getItem('carrito') !== null) {
-            carrito = JSON.parse(miLocalStorage.getItem('carrito'));
-            handleCarritoValue(carrito.length);
-        }
-    }
-
-    // Eventos
-    DOMbotonVaciar.addEventListener('click', vaciarCarrito);
-    filtroSelect.addEventListener('change', renderizarProductos);
-
-    // Inicio
-    cargarCarritoDeLocalStorage();
-    renderizarProductos();
-    renderizarCarrito();
+// Vaciar el carrito
+botonVaciar.addEventListener("click", () => {
+  carrito = [];
+  actualizarCarrito();
 });
+
+// Inicializar
+renderizarProductos();
+  
