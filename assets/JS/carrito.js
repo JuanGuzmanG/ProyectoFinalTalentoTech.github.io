@@ -67,10 +67,10 @@ function actualizarCarrito() {
     li.innerHTML = `
       <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail" style="width: 50px; margin-right: 10px;" />
       <div>
-        <div style="flex-grow: 1; width: 70px">
+        <div style="flex-grow: 1; width: 110px">
         ${producto.nombre} - $${producto.precio}
         </div>
-        <button style="margin-left: 10px" class="btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
+        <button  class="btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
       </div>
     `;
     carritoDOM.appendChild(li);
