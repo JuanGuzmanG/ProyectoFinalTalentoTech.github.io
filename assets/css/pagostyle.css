@@ -1,0 +1,14 @@
+.payment-form{
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgb(124, 124, 124);
+    border-radius: 8px;
+    box-shadow: 0 2px 10pc rgba(0, 0, 0, 0.1);
+}
+
+.titulo{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}

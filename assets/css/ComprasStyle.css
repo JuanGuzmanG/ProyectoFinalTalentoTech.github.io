@@ -2,6 +2,11 @@
 body{
     background-color: rgb(119, 119, 119) !important;
 }
+.cart a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
 
 .contenedor {
     display: flex;
