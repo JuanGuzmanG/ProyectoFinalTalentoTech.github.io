@@ -7,7 +7,15 @@ const productos = [
     { id: 6, nombre: "Red Dead Redemption", precio: 200, imagen: "assets/img/RDR.PNG" },
     { id: 7, nombre: "Son of the Forest", precio: 200, imagen: "assets/img/sotf.jpg" },
     { id: 8, nombre: "Terraria", precio: 200, imagen: "assets/img/Terraria.webp" },
-  ];
+    { id: 9, nombre: "finalfantasy.jpg", precio: 200, imagen: "assets/img/finalfantasy.jpg" },
+    { id: 10, nombre: "God of War Ragnarok", precio: 200, imagen: "assets/img/GOW.jpg" },
+    { id: 11, nombre: "Uncharted", precio: 200, imagen: "assets/img/uncharted.jpg" },
+    { id: 12, nombre: "TCG CARD SHOP", precio: 200, imagen: "assets/img/TCG.jpg" },
+    { id: 13, nombre: "Palword", precio: 200, imagen: "assets/img/Palworld.jpg" },
+    { id: 14, nombre: "Forza Horizon", precio: 200, imagen: "assets/img/Forzahorizon.webp" },
+    { id: 15, nombre: "hogwarts", precio: 200, imagen: "assets/img/hogwarts.jpg" },
+    { id: 16, nombre: "Quarke Wars", precio: 200, imagen: "assets/img/QuakeWars.jpg" },
+];
 
 let carrito = [];
 
