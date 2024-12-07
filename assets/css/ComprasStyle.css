@@ -1,9 +1,12 @@
 /* Estilos generales */
 body{
-    background-color: rgb(119, 119, 119) !important;
+    background-color: #181818 !important;
+}
+.cart{
+    color: white;
 }
 .cart a{
-    color: white;
+    color: black;
 }
 
 .contenedor {
