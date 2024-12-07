@@ -16,6 +16,7 @@ const cardsContainer = document.querySelector(".cards");
 const carritoDOM = document.getElementById("carrito");
 const totalDOM = document.getElementById("total");
 const botonVaciar = document.getElementById("boton-vaciar");
+const cartCounter = document.getElementById("cart-counter"); // Referencia al contador
 
 function renderizarProductos() {
   productos.forEach((producto) => {
@@ -51,6 +52,7 @@ function agregarProducto(event) {
   }
 
   actualizarCarrito();
+  actualizarContadorCarrito(); // Actualizamos el contador
 }
 
 function actualizarCarrito() {
@@ -86,11 +88,19 @@ function eliminarProducto(event) {
   }
 
   actualizarCarrito();
+  actualizarContadorCarrito(); // Actualizamos el contador después de eliminar un producto
 }
 
 botonVaciar.addEventListener("click", () => {
   carrito = [];
   actualizarCarrito();
+  actualizarContadorCarrito(); // Reseteamos el contador al vaciar el carrito
 });
+
+function actualizarContadorCarrito() {
+  const totalProductos = carrito.reduce((sum, prod) => sum + prod.cantidad, 0);
+  cartCounter.textContent = totalProductos; // Actualiza el número de productos en el carrito
+  cartCounter.style.display = totalProductos > 0 ? "inline" : "none"; // Ocultar si está vacío
+}
 
 renderizarProductos();
