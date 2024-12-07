@@ -17,9 +17,9 @@ window.onload = function () {
             // Obtiene el elemento con id 'contador' y muestra las visitas
             var contador = document.getElementById('contador');
             if (contador) {
-                contador.innerHTML = "Visitas a esta página: " + visitas;
+                contador.innerHTML = "Visitas: " + visitas;
             } else {
-                console.log("El elemento con id 'contador' no se encuentra.");
+                console.log("");
             }
         }
 

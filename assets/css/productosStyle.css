@@ -4,20 +4,22 @@ body{
 
 .contenedor {
     display: flex;
+    padding: 30px 0;
 }
 
 .sidebar { 
     color: white;
+    padding: 30px;
 }
+
 .sidebarBlock{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
-.sidebar h2 {
+.sidebarBlock h2{
     text-align: center;
 }
-
 .sidebar ul {
     list-style-type: none;
 }
@@ -39,27 +41,36 @@ body{
     gap: 20px;
 }
 
+.content{
+    margin: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+}
 .card {
-    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: calc(30%); /* Ajuste para el espacio entre tarjetas */
-    box-shadow: 0 2px 5px rgb(255, 255, 255);
+    margin: 10px;
+    max-width: 200px;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.card h5 {
+font-size: 18px;
+margin: 10px 0;
+}
+.card button {
+margin-top: 10px;
+}
 .card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    max-height: 150px;
+    object-fit: cover;
 }
-
-.card h3 {
-    margin: 10px 0;
-}
-
-.card p {
-    color: #555;
+  
+.card .card-body {
+padding: 10px;
 }
 #contador {
     text-align: center;
@@ -72,26 +83,8 @@ body{
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-
-/* Estilos responsivos */
-@media (min-width: 768px) {
-    .sidebar {
-        width: 20%;
-    }
-
-    .main-content {
-        width: 80%;
-    }
+  
+.card .btn {
+margin-top: 10px;
 }
 
-@media (max-width: 767px) {
-    .card {
-        width: calc(50% - 40px); /* Ajuste para el espacio entre tarjetas en pantallas más pequeñas */
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        width: 100%; /* Ajuste para el espacio entre tarjetas en pantallas muy pequeñas */
-    }
-}
