@@ -39,6 +39,9 @@ nav i{
 .icons_nav i{
     padding: 5px;
 }
+.icons_nav a{
+    padding: 0;
+}
 footer{
     background-color: #2EA0E7;
     display: flex;
@@ -58,4 +61,11 @@ footer li{
 }
 footer img{
     width: 150px;
+}
+
+#contador {
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
 }

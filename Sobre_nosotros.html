@@ -26,7 +26,13 @@
             </div>
             <div class="icons_nav lateral der">
               <i class="bi bi-search"></i>
-              <a href="Compras.html"><i class="bi bi-cart"></i></a>
+              <a href="Compras.html">
+                <i class="bi bi-cart">
+                  <span id="cart-counter" class="badge bg-danger rounded-pill">0</span>
+                </i>
+              </a>
+              <i class="bi bi-eye"></i>
+              <span id="contador">0</span>
             </div>
         </nav>
     </header>
@@ -77,8 +83,6 @@
         </p>
       </div>
     </div>
-    <!-- Agrega el div con id "contador" donde deseas mostrar las visitas -->
-    <p id="contador" class="titulo_nuevos"></p>
     </main>
 
     <footer>
@@ -106,6 +110,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
         <script src="/assets/JS/contador.js"></script>
+        <script src="/assets/JS/carrito.js"></script>
 </body>
 
 </html>

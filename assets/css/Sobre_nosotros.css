@@ -71,18 +71,6 @@ h1 {
     text-align: center;
 }
 
-#contador {
-    text-align: center;
-    font-size: 18px;
-    color: #fff;
-    background-color: #333;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: fit-content;
-    margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 main {
     background-image: url("/assets/img/mario.png");
     background-attachment: fixed;

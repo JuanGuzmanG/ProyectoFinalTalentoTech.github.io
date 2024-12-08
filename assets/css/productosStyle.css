@@ -72,18 +72,7 @@ margin-top: 10px;
 .card .card-body {
 padding: 10px;
 }
-#contador {
-    text-align: center;
-    font-size: 18px;
-    color: #fff;
-    background-color: #333;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: fit-content;
-    margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+
 .card .btn {
 margin-top: 10px;
 }

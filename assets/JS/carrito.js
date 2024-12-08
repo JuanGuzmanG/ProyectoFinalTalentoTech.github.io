@@ -1,32 +1,44 @@
-// Datos de ejemplo
 const productos = [
-  { id: 1, nombre: "Elder Ring", precio: 100, imagen: "assets/img/eldenring.jpg" },
-  { id: 2, nombre: "Divinity 2", precio: 150, imagen: "assets/img/divinity2.png" },
-  { id: 3, nombre: "Battlefield 3", precio: 200, imagen: "assets/img/battlefield.jpg" },
-  { id: 4, nombre: "Neon Blood", precio: 200, imagen: "assets/img/NEON_BLOOD.jpg" },
-  { id: 5, nombre: "Quake", precio: 200, imagen: "assets/img/QuakeWars.jpg" },
-  { id: 6, nombre: "Red Dead Redemption", precio: 200, imagen: "assets/img/RDR.PNG" },
-  { id: 7, nombre: "Son of the Forest", precio: 200, imagen: "assets/img/sotf.jpg" },
-  { id: 8, nombre: "Terraria", precio: 200, imagen: "assets/img/Terraria.webp" },
-  { id: 9, nombre: "finalfantasy.jpg", precio: 200, imagen: "assets/img/finalfantasy.jpg" },
-  { id: 10, nombre: "God of War Ragnarok", precio: 200, imagen: "assets/img/GOW.jpg" },
-  { id: 11, nombre: "Uncharted", precio: 200, imagen: "assets/img/uncharted.jpg" },
-  { id: 12, nombre: "TCG CARD SHOP", precio: 200, imagen: "assets/img/TCG.jpg" },
-  { id: 13, nombre: "Palword", precio: 200, imagen: "assets/img/Palworld.jpg" },
-  { id: 14, nombre: "Forza Horizon", precio: 200, imagen: "assets/img/Forzahorizon.webp" },
-  { id: 15, nombre: "hogwarts", precio: 200, imagen: "assets/img/hogwarts.jpg" },
+  { id: 1, nombre: "Elder Ring", precio: 100, categoria: "accion", imagen: "assets/img/eldenring.jpg" },
+  { id: 2, nombre: "Divinity 2", precio: 150, categoria: "aventura", imagen: "assets/img/divinity2.png" },
+  { id: 3, nombre: "Battlefield 3", precio: 200, categoria: "disparos", imagen: "assets/img/battlefield.jpg" },
+  { id: 4, nombre: "Neon Blood", precio: 200, categoria: "accion", imagen: "assets/img/NEON_BLOOD.jpg" },
+  { id: 5, nombre: "Quake", precio: 200, categoria: "disparos", imagen: "assets/img/QuakeWars.jpg" },
+  { id: 6, nombre: "Red Dead Redemption", precio: 200, categoria: "aventura", imagen: "assets/img/RDR.PNG" },
+  { id: 7, nombre: "Son of the Forest", precio: 200, categoria: "rolplay", imagen: "assets/img/sotf.jpg" },
+  { id: 8, nombre: "Terraria", precio: 200, categoria: "simulacion", imagen: "assets/img/Terraria.webp" },
 ];
 
 let carrito = [];
 
+// Referencias del DOM
 const cardsContainer = document.querySelector(".cards");
 const carritoDOM = document.getElementById("carrito");
 const totalDOM = document.getElementById("total");
 const botonVaciar = document.getElementById("boton-vaciar");
-const cartCounter = document.getElementById("cart-counter"); // Referencia al contador
+const cartCounter = document.getElementById("cart-counter");
+const filtros = document.querySelectorAll(".form-check-input"); // Checkboxes para filtrar
 
-function renderizarProductos() {
-  productos.forEach((producto) => {
+// Función para cargar el carrito desde localStorage
+function cargarCarritoDesdeLocalStorage() {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    actualizarCarrito();
+    actualizarContadorCarrito();
+  }
+}
+
+// Función para guardar el carrito en localStorage
+function guardarCarritoEnLocalStorage() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Renderizar productos con opción de filtrado
+function renderizarProductos(listaProductos = productos) {
+  cardsContainer.innerHTML = "";
+
+  listaProductos.forEach((producto) => {
     const card = document.createElement("div");
     card.classList.add("card", "p-3");
 
@@ -47,6 +59,25 @@ function renderizarProductos() {
   );
 }
 
+// Filtrar productos según categorías seleccionadas
+function filtrarProductos() {
+  const categoriasSeleccionadas = Array.from(filtros)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  const productosFiltrados = categoriasSeleccionadas.length > 0
+    ? productos.filter(producto => categoriasSeleccionadas.includes(producto.categoria))
+    : productos;
+
+  renderizarProductos(productosFiltrados);
+}
+
+// Agregar evento de cambio a los checkboxes
+filtros.forEach(checkbox => {
+  checkbox.addEventListener("change", filtrarProductos);
+});
+
+// Funciones del carrito (sin cambios significativos)
 function agregarProducto(event) {
   const idProducto = parseInt(event.target.dataset.id);
   const producto = productos.find((prod) => prod.id === idProducto);
@@ -58,8 +89,9 @@ function agregarProducto(event) {
     carrito.push({ ...producto, cantidad: 1 });
   }
 
+  guardarCarritoEnLocalStorage();
   actualizarCarrito();
-  actualizarContadorCarrito(); // Actualizamos el contador
+  actualizarContadorCarrito();
 }
 
 function actualizarCarrito() {
@@ -94,20 +126,24 @@ function eliminarProducto(event) {
     carrito.splice(index, 1);
   }
 
+  guardarCarritoEnLocalStorage();
   actualizarCarrito();
-  actualizarContadorCarrito(); // Actualizamos el contador después de eliminar un producto
+  actualizarContadorCarrito();
 }
 
 botonVaciar.addEventListener("click", () => {
   carrito = [];
+  guardarCarritoEnLocalStorage();
   actualizarCarrito();
-  actualizarContadorCarrito(); // Reseteamos el contador al vaciar el carrito
+  actualizarContadorCarrito();
 });
 
 function actualizarContadorCarrito() {
   const totalProductos = carrito.reduce((sum, prod) => sum + prod.cantidad, 0);
-  cartCounter.textContent = totalProductos; // Actualiza el número de productos en el carrito
-  cartCounter.style.display = totalProductos > 0 ? "inline" : "none"; // Ocultar si está vacío
+  cartCounter.textContent = totalProductos;
+  cartCounter.style.display = totalProductos > 0 ? "inline" : "none";
 }
 
+// Cargar el carrito y renderizar productos al inicio
+cargarCarritoDesdeLocalStorage();
 renderizarProductos();
